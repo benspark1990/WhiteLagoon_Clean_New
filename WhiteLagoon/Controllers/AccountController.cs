@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Text.Encodings.Web;
-using System.Text;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
-using WhiteLagoon_Utility;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.App.ViewModels.Common;
+using WhiteLagoon.Domain.Common;
+using WhiteLagoon.Application.Common.Utility;
 
-namespace WhiteLagoon.Controllers
+namespace WhiteLagoon.App.Controllers
 {
     public class AccountController : Controller
     {
@@ -36,7 +33,7 @@ namespace WhiteLagoon.Controllers
             {
                 ReturnUrl = returnUrl,
             };
-            
+
             return View(loginVM);
         }
 
@@ -80,7 +77,7 @@ namespace WhiteLagoon.Controllers
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(SD.Role_Customer)).GetAwaiter().GetResult();
             }
-            RegisterVM registerVM = new ()
+            RegisterVM registerVM = new()
             {
                 RoleList = _roleManager.Roles.Select(x => x.Name).Select(i => new SelectListItem
                 {
@@ -88,7 +85,7 @@ namespace WhiteLagoon.Controllers
                     Value = i
                 }),
             };
-            
+
             return View(registerVM);
         }
 
@@ -110,7 +107,7 @@ namespace WhiteLagoon.Controllers
             if (result.Succeeded)
             {
 
-                if (!String.IsNullOrEmpty(registerVM.Role))
+                if (!string.IsNullOrEmpty(registerVM.Role))
                 {
                     await _userManager.AddToRoleAsync(user, registerVM.Role);
                 }
@@ -119,7 +116,7 @@ namespace WhiteLagoon.Controllers
                     await _userManager.AddToRoleAsync(user, SD.Role_Customer);
                 }
 
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                await _signInManager.SignInAsync(user, isPersistent: false);
                 if (string.IsNullOrEmpty(registerVM.ReturnUrl))
                 {
                     return RedirectToAction("Index", "Home");
@@ -128,7 +125,7 @@ namespace WhiteLagoon.Controllers
                 {
                     return LocalRedirect(registerVM.ReturnUrl);
                 }
-                   
+
             }
             foreach (var error in result.Errors)
             {

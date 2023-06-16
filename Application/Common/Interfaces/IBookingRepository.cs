@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using WhiteLagoon_Models;
+﻿using WhiteLagoon.Domain.Entities;
 
-namespace WhiteLagoon_DataAccess.Repository.IRepository
+namespace WhiteLagoon.Application.Common.Interfaces
 {
     public interface IBookingRepository : IRepository<BookingDetail>
     {

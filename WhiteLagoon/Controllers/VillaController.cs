@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Stripe;
-using WhiteLagoon_DataAccess;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Domain.Entities;
 
 namespace WhiteLagoon.Controllers
 {

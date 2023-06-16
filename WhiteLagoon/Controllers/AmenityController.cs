@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using WhiteLagoon_DataAccess;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
-using WhiteLagoon_Models.ViewModels;
-using WhiteLagoon_Utility;
+using WhiteLagoon.App.ViewModels;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Application.Common.Utility;
+using WhiteLagoon.Domain.Entities;
 
-namespace WhiteLagoon.Controllers
+namespace WhiteLagoon.App.Controllers
 {
-    [Authorize(Roles =SD.Role_Admin)]
+    [Authorize(Roles = SD.Role_Admin)]
     public class AmenityController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -20,7 +18,7 @@ namespace WhiteLagoon.Controllers
         }
         public IActionResult Index()
         {
-            List<Amenity> AmenityList = _unitOfWork.Amenity.GetAll(includeProperties:"Villa").OrderBy(u=>u.Villa.Name).ToList();
+            List<Amenity> AmenityList = _unitOfWork.Amenity.GetAll(includeProperties: "Villa").OrderBy(u => u.Villa.Name).ToList();
             return View(AmenityList);
         }
         public IActionResult Create()

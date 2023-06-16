@@ -1,14 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Infrastructure.Data;
 
-namespace WhiteLagoon_DataAccess.Repository
+namespace WhiteLagoon.Infrastructure.Repository
 {
     public class Repository<T> : IRepository<T> where T : class
     {
@@ -17,9 +12,9 @@ namespace WhiteLagoon_DataAccess.Repository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
-            this.dbSet = _db.Set<T>();
+            dbSet = _db.Set<T>();
             //_db.Categories == dbSet
-            
+
 
         }
         public void Add(T entity)

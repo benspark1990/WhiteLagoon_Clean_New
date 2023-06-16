@@ -1,11 +1,10 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
-using WhiteLagoon_DataAccess;
-using WhiteLagoon_DataAccess.Repository;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Domain.Common;
+using WhiteLagoon.Infrastructure.Data;
+using WhiteLagoon.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,4 +1,4 @@
-﻿using WhiteLagoon_Models;
+﻿using WhiteLagoon.Domain.Entities;
 
 namespace WhiteLagoon_Utility
 {

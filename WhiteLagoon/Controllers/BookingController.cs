@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Stripe.Checkout;
 using System.Security.Claims;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
-using WhiteLagoon_Models.ViewModels;
-using WhiteLagoon_Utility;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Application.Common.Utility;
+using WhiteLagoon.Domain.Common;
+using WhiteLagoon.Domain.Entities;
 
-namespace WhiteLagoon.Controllers
+namespace WhiteLagoon.App.Controllers
 {
     public class BookingController : Controller
     {

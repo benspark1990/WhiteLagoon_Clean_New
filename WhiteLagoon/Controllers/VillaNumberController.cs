@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using System.Data;
-using WhiteLagoon_DataAccess;
-using WhiteLagoon_DataAccess.Repository.IRepository;
-using WhiteLagoon_Models;
-using WhiteLagoon_Models.ViewModels;
-using WhiteLagoon_Utility;
+using WhiteLagoon.App.ViewModels;
+using WhiteLagoon.Application.Common.Interfaces;
+using WhiteLagoon.Application.Common.Utility;
+using WhiteLagoon.Domain.Entities;
 
 namespace WhiteLagoon.Controllers
 {
