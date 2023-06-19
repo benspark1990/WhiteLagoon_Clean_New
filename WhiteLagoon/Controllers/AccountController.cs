@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.App.ViewModels.Common;
-using WhiteLagoon.Domain.Common;
 using WhiteLagoon.Application.Common.Utility;
+using WhiteLagoon.Domain.Common;
 
 namespace WhiteLagoon.App.Controllers
 {
@@ -13,14 +12,11 @@ namespace WhiteLagoon.App.Controllers
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
-        private readonly IUnitOfWork _unitOfWork;
 
         public AccountController(UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager,
-            SignInManager<ApplicationUser> signInManager,
-            IUnitOfWork unitOfWork)
+            SignInManager<ApplicationUser> signInManager)
         {
-            _unitOfWork = unitOfWork;
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
@@ -97,8 +93,8 @@ namespace WhiteLagoon.App.Controllers
                 Name = registerVM.Name,
                 Email = registerVM.Email,
                 PhoneNumber = registerVM.Phone,
-                NormalizedEmail=registerVM.Email.ToUpper(),
-                EmailConfirmed=true,
+                NormalizedEmail = registerVM.Email.ToUpper(),
+                EmailConfirmed = true,
                 UserName = registerVM.Email,
                 CreatedAt = DateTime.Now
             };

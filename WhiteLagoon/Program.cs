@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
+using WhiteLagoon.Application;
 using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.Domain.Common;
 using WhiteLagoon.Infrastructure.Data;
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddServices();
 //builder.Services.Configure<CookieAuthenticationOptions>(options =>
 //{
 //    options.LoginPath = new PathString("/[your-path]");

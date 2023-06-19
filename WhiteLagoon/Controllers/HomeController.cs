@@ -1,23 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WhiteLagoon.App.ViewModels;
-using WhiteLagoon.Application.Common.Interfaces;
 using WhiteLagoon.Application.Common.Utility;
+using WhiteLagoon.Application.Services.Interfaces;
 
 namespace WhiteLagoon.App.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IVillaService _villaService;
+        private readonly IVillaNumberService _villaNumberService;
+        private readonly IBookingService _bookingService;
 
-        public HomeController(IUnitOfWork unitOfWork)
+        public HomeController(IVillaService villaService, IVillaNumberService villaNumberService, IBookingService bookingService)
         {
-            _unitOfWork = unitOfWork;
+            _villaService = villaService;
+            _villaNumberService = villaNumberService;
+            _bookingService = bookingService;
         }
         public IActionResult Index()
         {
             HomeVM homeVM = new HomeVM()
             {
-                VillaList = _unitOfWork.Villa.GetAll(includeProperties: "VillaAmenity").ToList(),
+                VillaList = _villaService.GetAll(includeProperties: "VillaAmenity"),
                 Nights = 1
             };
             return View(homeVM);
@@ -26,11 +30,9 @@ namespace WhiteLagoon.App.Controllers
         [HttpPost]
         public IActionResult GetVillasByDate(int nights, DateOnly checkInDate)
         {
-            var villaList = _unitOfWork.Villa.GetAll(includeProperties: "VillaAmenity").ToList();
-
-            var villaNumbersList = _unitOfWork.VillaNumber.GetAll().ToList();
-            var bookedVillas = _unitOfWork.Booking.GetAll(u => u.Status==SD.StatusApproved ||
-            u.Status==SD.StatusCheckedIn).ToList();
+            var villaList = _villaService.GetAll(includeProperties: "VillaAmenity");
+            var villaNumbersList = _villaNumberService.GetAll();
+            var bookedVillas = _bookingService.GetAllByStatus();
 
             foreach (var villa in villaList)
             {
@@ -51,7 +53,7 @@ namespace WhiteLagoon.App.Controllers
         {
             DetailsVM detailsVM = new()
             {
-                Villa = _unitOfWork.Villa.Get(u => u.Id == villaId),
+                Villa = _villaService.GetById(villaId),
                 Nights = 1
             };
             return View(detailsVM);
