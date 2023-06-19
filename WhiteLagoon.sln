@@ -3,13 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33606.364
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiteLagoon", "WhiteLagoon\WhiteLagoon.csproj", "{AC95F2FF-66A2-4060-981E-F2B8ACEFE0B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiteLagoon.App", "WhiteLagoon\WhiteLagoon.App.csproj", "{AC95F2FF-66A2-4060-981E-F2B8ACEFE0B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiteLagoon_DataAccess", "WhiteLagoon_DataAccess\WhiteLagoon_DataAccess.csproj", "{783E3EFE-1212-4B65-AEE5-E990938E8B9F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiteLagoon.Infrastructure", "WhiteLagoon_DataAccess\WhiteLagoon.Infrastructure.csproj", "{783E3EFE-1212-4B65-AEE5-E990938E8B9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WhiteLagoon_Models", "WhiteLagoon_Models\WhiteLagoon_Models.csproj", "{4510DE91-8582-4F7E-9760-29AA4A6D5D1F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4C862C0C-806E-4267-B036-A10CEB69E611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLagoon_Utility", "WhiteLagoon_Utility\WhiteLagoon_Utility.csproj", "{016112DC-3981-4A94-9437-FFE1E2C59236}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{02F5CAA0-3C81-433E-8A15-53D6415599BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLagoon.Application", "Application\WhiteLagoon.Application.csproj", "{4FB43425-2E19-472E-B26A-0C5B4E3F07F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLagoon.Domain", "WhiteLagoon.Domain\WhiteLagoon.Domain.csproj", "{67F754FD-8800-48F8-BEA1-EB78D97D78AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,17 +29,23 @@ Global
 		{783E3EFE-1212-4B65-AEE5-E990938E8B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{783E3EFE-1212-4B65-AEE5-E990938E8B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{783E3EFE-1212-4B65-AEE5-E990938E8B9F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4510DE91-8582-4F7E-9760-29AA4A6D5D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4510DE91-8582-4F7E-9760-29AA4A6D5D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4510DE91-8582-4F7E-9760-29AA4A6D5D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4510DE91-8582-4F7E-9760-29AA4A6D5D1F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{016112DC-3981-4A94-9437-FFE1E2C59236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{016112DC-3981-4A94-9437-FFE1E2C59236}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{016112DC-3981-4A94-9437-FFE1E2C59236}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{016112DC-3981-4A94-9437-FFE1E2C59236}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB43425-2E19-472E-B26A-0C5B4E3F07F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB43425-2E19-472E-B26A-0C5B4E3F07F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB43425-2E19-472E-B26A-0C5B4E3F07F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB43425-2E19-472E-B26A-0C5B4E3F07F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F754FD-8800-48F8-BEA1-EB78D97D78AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F754FD-8800-48F8-BEA1-EB78D97D78AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F754FD-8800-48F8-BEA1-EB78D97D78AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F754FD-8800-48F8-BEA1-EB78D97D78AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC95F2FF-66A2-4060-981E-F2B8ACEFE0B0} = {4C862C0C-806E-4267-B036-A10CEB69E611}
+		{783E3EFE-1212-4B65-AEE5-E990938E8B9F} = {4C862C0C-806E-4267-B036-A10CEB69E611}
+		{4FB43425-2E19-472E-B26A-0C5B4E3F07F2} = {4C862C0C-806E-4267-B036-A10CEB69E611}
+		{67F754FD-8800-48F8-BEA1-EB78D97D78AF} = {4C862C0C-806E-4267-B036-A10CEB69E611}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A124642E-B93E-4472-A089-2FCB7C29F685}

@@ -1,10 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Controllers\fdwz1nap.ttu~" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0-preview.4.23259.3" />
@@ -17,9 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WhiteLagoon_DataAccess\WhiteLagoon_DataAccess.csproj" />
-    <ProjectReference Include="..\WhiteLagoon_Models\WhiteLagoon_Models.csproj" />
-    <ProjectReference Include="..\WhiteLagoon_Utility\WhiteLagoon_Utility.csproj" />
+    <ProjectReference Include="..\WhiteLagoon_DataAccess\WhiteLagoon.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
